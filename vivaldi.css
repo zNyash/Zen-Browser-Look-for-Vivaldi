@@ -1,0 +1,189 @@
+:root {
+  --tabbar-width: 1px;
+  --tabbar-width-expanded: 250px;
+  --transition-duration: 125ms;
+  --transition-bezier: cubic-bezier(0.15, 0.5, 0.9, 1.2);
+}
+
+#header {
+  height: 0.5rem !important;
+  min-height: 0.5rem !important;
+  box-shadow: none !important;
+  background-color: none !important;
+  pointer-events: all !important;
+  background-color: var(--colorBg) !important;
+  transition: all 125ms ease !important;
+}
+#header:hover {
+  height: 2rem !important;
+  min-height: 2rem !important;
+}
+#header #pagetitle {
+  background-color: var(--colorBg) !important;
+}
+#header #titlebar {
+  pointer-events: all !important;
+}
+#header .vivaldi {
+  top: -4px !important;
+  left: -2px !important;
+  height: 1rem !important;
+  opacity: 0 !important;
+  transition: all 125ms ease !important;
+}
+#header .vivaldi:hover {
+  opacity: 1 !important;
+  height: 2rem !important;
+}
+
+.mainbar {
+  border: none !important;
+}
+
+.window-buttongroup {
+  overflow: hidden;
+  height: 0.5rem !important;
+  border-radius: 0 0 0 0.25rem;
+  transition: all 125ms ease !important;
+}
+.window-buttongroup button {
+  opacity: 0;
+  margin: 0 !important;
+  height: 100% !important;
+  transition: all 125ms ease !important;
+}
+.window-buttongroup:hover {
+  height: 2rem !important;
+}
+.window-buttongroup:hover button {
+  opacity: 1;
+}
+.window-buttongroup .window-minimize {
+  margin-left: 0 !important;
+}
+
+#webpage-stack {
+  border-radius: 0.5rem;
+  margin: 0.5rem;
+  margin-top: 0rem;
+  margin-left: 0.2rem;
+}
+
+#webview-container {
+  background-color: var(--colorBg);
+}
+
+#panels-container {
+  background-color: var(--colorBg);
+  margin-left: -0.5rem;
+  transition: all 125ms ease !important;
+}
+
+.tabbar-wrapper {
+  width: 0.3rem !important;
+  position: absolute;
+  left: 0;
+}
+.tabbar-wrapper .tabbar-wrapper {
+  width: 1px !important;
+  background-color: var(--colorBg) !important;
+  z-index: 100 !important;
+  transition: all 125ms cubic-bezier(0.15, 0.5, 0.9, 1.2) !important;
+}
+
+#tabs-tabbar-container {
+  width: 1px !important;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  border: 1px solid transparent;
+  margin-top: 0rem;
+  margin-bottom: 0.5rem;
+  opacity: 0 !important;
+  transition: all 125ms cubic-bezier(0.15, 0.5, 0.9, 1.2) !important;
+}
+#tabs-tabbar-container:hover {
+  border: 1px solid hsla(0, 0%, 100%, 0.1);
+  box-shadow: 0px 0px 0.5rem hsla(0, 0%, 0%, 0.5), 0px 0px 1rem hsla(0, 0%, 0%, 0.5);
+  opacity: 1 !important;
+}
+#tabs-tabbar-container:hover .tabbar-wrapper .tabbar-wrapper {
+  width: 250px !important;
+}
+
+.tabbar-wrapper:hover #tabs-tabbar-container {
+  width: 250px !important;
+  border: 1px solid hsla(0, 0%, 100%, 0.1);
+  box-shadow: 0px 0px 0.5rem hsla(0, 0%, 0%, 0.5), 0px 0px 1rem hsla(0, 0%, 0%, 0.5);
+  margin-left: 0.25rem;
+  opacity: 1 !important;
+}
+
+button.SlideBar.SlideBar--FullHeight {
+  display: none !important;
+}
+
+.button-popup {
+  z-index: 150 !important;
+}
+
+.resize {
+  max-height: 100% !important;
+  max-width: 250px !important;
+}
+.resize .tab-strip {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2px;
+}
+.resize .tab-strip .tab-position {
+  position: relative !important;
+  height: 2.25rem !important;
+  margin-bottom: -29px;
+}
+.resize .tab-strip .tab-position .tab-wrapper {
+  max-height: 2.25rem !important;
+}
+.resize .tab-strip .tab-position .tab {
+  height: 2.25rem !important;
+  background-color: var(--colorBg);
+  justify-content: center;
+}
+.resize .tab-strip .tab-position .tab:hover {
+  background-color: var(--colorBgLightIntense) !important;
+}
+.resize .tab-strip .tab-position .tab.active {
+  background-color: var(--colorBgLighter) !important;
+}
+
+.UrlBar-AddressField.urlfield-anchor.button-textonly.below {
+  top: calc(50vh - 189px) !important;
+  width: 50vh;
+  left: 50%;
+  margin: 0;
+  transform: translateX(-50%);
+  background-color: var(--colorAccentBgFadedMore);
+  outline-color: var(--colorAccentBgFadedMost);
+  height: 3rem !important;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 0.5rem;
+  box-shadow: 0 5px 16px 16px hsl(from black h s l/0.1), 0 5px 8px 8px hsl(from black h s l/0.2);
+}
+.UrlBar-AddressField.urlfield-anchor.button-textonly.below .OmniDropdown {
+  background-color: var(--colorAccentBgFadedMore);
+  border: 2px solid var(--colorAccentBgFadedMost);
+  border-radius: 0.5rem;
+  box-shadow: 0 5px 16px 16px hsl(from black h s l/0.1), 0 5px 8px 8px hsl(from black h s l/0.2);
+}
+.UrlBar-AddressField.urlfield-anchor.button-textonly.below .OmniDropdown-Collection {
+  padding-top: 16px;
+}
+.UrlBar-AddressField.urlfield-anchor.button-textonly.below .OmniDropdown .OmniLinkItem:not(.UrlBar-AddressField.urlfield-anchor.button-textonly.below .OmniDropdown .OmniLinkItem--Highlighted):hover {
+  background-color: var(--colorAccentBgFadedMost);
+}
+
+/*# sourceMappingURL=vivaldi.css.map */

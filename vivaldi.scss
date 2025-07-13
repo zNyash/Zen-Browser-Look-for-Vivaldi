@@ -1,0 +1,225 @@
+$tabbar-width: 1px;
+$tabbar-width-expanded: 250px;
+$transition-duration: 125ms;
+$transition-bezier: cubic-bezier(0.15, 0.5, 0.9, 1.2);
+
+:root {
+  --tabbar-width: #{$tabbar-width};
+  --tabbar-width-expanded: #{$tabbar-width-expanded};
+  --transition-duration: #{$transition-duration};
+  --transition-bezier: #{$transition-bezier};
+}
+
+// ---------- Top Bars ----------
+#header {
+  height: 0.5rem !important;
+  min-height: 0.5rem !important;
+  box-shadow: none !important;
+  background-color: none !important;
+  pointer-events: all !important;
+  background-color: var(--colorBg) !important;
+
+  transition: all $transition-duration ease !important;
+
+  &:hover {
+    height: 2rem !important;
+    min-height: 2rem !important;
+  }
+
+  #pagetitle {
+    background-color: var(--colorBg) !important;
+  }
+  #titlebar {
+    pointer-events: all !important;
+  }
+  .vivaldi {
+    top: -4px !important;
+    left: -2px !important;
+    height: 1rem !important;
+    opacity: 0 !important;
+    transition: all $transition-duration ease !important;
+
+    &:hover {
+      opacity: 1 !important;
+      height: 2rem !important;
+    }
+  }
+}
+.mainbar {
+  border: none !important;
+}
+.window-buttongroup {
+  overflow: hidden;
+  height: 0.5rem !important;
+  border-radius: 0 0 0 0.25rem;
+  transition: all $transition-duration ease !important;
+
+  button {
+    opacity: 0;
+    margin: 0 !important;
+    height: 100% !important;
+    transition: all $transition-duration ease !important;
+  }
+
+  &:hover {
+    height: 2rem !important;
+
+    button {
+      opacity: 1;
+    }
+  }
+
+  .window-minimize {
+    margin-left: 0 !important;
+  }
+}
+
+// ---------- Viewport ----------
+#webpage-stack {
+  border-radius: 0.5rem;
+  margin: 0.5rem;
+  margin-top: 0rem;
+  margin-left: calc(0.5rem - 0.3rem);
+}
+#webview-container {
+  background-color: var(--colorBg);
+}
+
+// ---------- Side Panels ----------
+#panels-container {
+  background-color: var(--colorBg);
+  margin-left: -0.5rem;
+  transition: all $transition-duration ease !important;
+}
+
+// Tabs bar
+.tabbar-wrapper {
+  width: 0.3rem !important;
+  position: absolute;
+  left: 0;
+
+  .tabbar-wrapper {
+    width: $tabbar-width !important;
+    background-color: var(--colorBg) !important;
+    z-index: 100 !important;
+    transition: all $transition-duration $transition-bezier !important;
+  }
+}
+#tabs-tabbar-container {
+  width: $tabbar-width !important;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  border: 1px solid transparent;
+  margin-top: 0rem;
+  margin-bottom: 0.5rem;
+  opacity: 0 !important;
+  transition: all $transition-duration $transition-bezier !important;
+
+  &:hover {
+    border: 1px solid hsl(0deg 0% 100% / 10%);
+    box-shadow: 0px 0px 0.5rem hsl(0deg 0% 0% / 50%), 0px 0px 1rem hsl(0deg 0% 0% / 50%);
+    opacity: 1 !important;
+
+    .tabbar-wrapper {
+      .tabbar-wrapper {
+        width: $tabbar-width-expanded !important;
+      }
+    }
+  }
+}
+// .button-toolbar.newtab {
+//   opacity: 0 !important;
+//   transition: all $transition-duration $transition-bezier !important;
+// }
+.tabbar-wrapper:hover {
+  #tabs-tabbar-container {
+    width: $tabbar-width-expanded !important;
+    border: 1px solid hsl(0deg 0% 100% / 10%);
+    box-shadow: 0px 0px 0.5rem hsl(0deg 0% 0% / 50%), 0px 0px 1rem hsl(0deg 0% 0% / 50%);
+    margin-left: 0.25rem;
+    opacity: 1 !important;
+  }
+
+  // .button-toolbar.newtab {
+  //   opacity: 1 !important;
+  // }
+}
+
+button.SlideBar.SlideBar--FullHeight {
+  display: none !important;
+}
+.button-popup {
+  z-index: 150 !important;
+}
+
+// Tabs itself
+.resize {
+  max-height: 100% !important;
+  max-width: $tabbar-width-expanded !important;
+
+  .tab-strip {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2px;
+
+    .tab-position {
+      position: relative !important;
+      height: 2.25rem !important;
+      margin-bottom: -29px;
+
+      .tab-wrapper {
+        max-height: 2.25rem !important;
+      }
+
+      .tab {
+        height: 2.25rem !important;
+        background-color: var(--colorBg);
+        justify-content: center;
+
+        &:hover {
+          background-color: var(--colorBgLightIntense) !important;
+        }
+        &.active {
+          background-color: var(--colorBgLighter) !important;
+        }
+      }
+    }
+  }
+}
+
+// ---------- Search ----------
+.UrlBar-AddressField.urlfield-anchor.button-textonly.below {
+  top: calc(50vh - 378px / 2) !important;
+  width: 50vh;
+  left: 50%;
+  margin: 0;
+  transform: translateX(-50%);
+  background-color: var(--colorAccentBgFadedMore);
+  outline-color: var(--colorAccentBgFadedMost);
+  height: 3rem !important;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 0.5rem;
+  box-shadow: 0 5px 16px 16px hsl(from black h s l / 0.1), 0 5px 8px 8px hsl(from black h s l / 0.2);
+
+  .OmniDropdown {
+    background-color: var(--colorAccentBgFadedMore);
+    border: 2px solid var(--colorAccentBgFadedMost);
+    border-radius: 0.5rem;
+    box-shadow: 0 5px 16px 16px hsl(from black h s l / 0.1), 0 5px 8px 8px hsl(from black h s l / 0.2);
+
+    &-Collection {
+      padding-top: 16px;
+    }
+
+    .OmniLinkItem {
+      &:not(&--Highlighted):hover {
+        background-color: var(--colorAccentBgFadedMost);
+      }
+    }
+  }
+}
