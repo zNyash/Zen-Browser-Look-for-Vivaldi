@@ -1,4 +1,3 @@
-/* sass variables */
 $tabbar-width-colapsed: var(--tabbar-width-colapsed);
 $tabbar-width-expanded: var(--tabbar-width-expanded);
 $transition-duration: var(--transition-duration);
@@ -61,7 +60,7 @@ $overall-corner-radius: var(--overall-corner-radius);
   border: none !important;
 }
 .window-buttongroup {
-  border-radius: 0 0 $overall-corner-radius $overall-corner-radius;
+  border-radius: 0;
   height: $viewport-corner-width !important;
   overflow: hidden;
   transition: $transition-ease;
@@ -117,6 +116,11 @@ $overall-corner-radius: var(--overall-corner-radius);
     background-color: var(--colorBg) !important;
   }
 
+  .button-toolbar {
+    button:hover {
+      background-color: hsl(from var(--colorBg) h s 80 / 0.05);
+    }
+  }
   .panel {
     backdrop-filter: blur(12px);
     background-color: hsl(from var(--colorBg) h s l / 0.8);
@@ -142,7 +146,7 @@ $overall-corner-radius: var(--overall-corner-radius);
 }
 #tabs-tabbar-container {
   backdrop-filter: blur(12px);
-  background-color: hsl(from var(--colorBg) h s l / 0.95) !important;
+  background-color: hsl(from var(--colorBg) h s l / 0.92) !important;
   border: 1px solid transparent;
   border-radius: $overall-corner-radius;
   margin-bottom: $viewport-corner-width;
@@ -151,6 +155,10 @@ $overall-corner-radius: var(--overall-corner-radius);
   overflow: hidden;
   transition: $transition-bezier;
   width: $tabbar-width-colapsed !important;
+
+  .button-toolbar {
+    background-color: transparent !important;
+  }
 
   &:hover {
     border: 1px solid hsl(0deg 0% 100% / 10%);
@@ -210,25 +218,25 @@ button.SlideBar.SlideBar--FullHeight {
         justify-content: center;
 
         &:hover {
-          background-color: hsl(from var(--colorBg) h s calc(l + 4));
+          background-color: hsl(from var(--colorBg) h s 80 / 0.05);
 
           button.close {
             opacity: 1 !important;
 
             &:hover {
-              background-color: hsl(from var(--colorBg) h s calc(l + 8)) !important;
+              background-color: hsl(from var(--colorBg) h s 80 / 0.05) !important;
             }
           }
         }
 
         &.active {
-          background-color: hsl(from var(--colorBg) h s calc(l + 8)) !important;
+          background-color: hsl(from var(--colorBg) h s 80 / 0.1) !important;
 
           button.close {
             opacity: 1 !important;
 
             &:hover {
-              background-color: hsl(from var(--colorBg) h s calc(l + 16)) !important;
+              background-color: hsl(from var(--colorBg) h s 80 / 0.1) !important;
             }
           }
         }
@@ -259,11 +267,11 @@ button.SlideBar.SlideBar--FullHeight {
       height: 3rem !important;
       left: 50%;
       margin: 0;
+      max-width: 630px;
       outline-color: var(--colorAccentBgFadedMost);
       top: calc(50vh - 378px / 2) !important;
       transform: translateX(-50%);
       width: 200%;
-      max-width: 630px;
 
       .OmniDropdown {
         background-color: var(--colorAccentBgFadedMore);
@@ -280,6 +288,49 @@ button.SlideBar.SlideBar--FullHeight {
             background-color: var(--colorAccentBgFadedMost);
           }
         }
+      }
+    }
+  }
+
+  &:is(.popup, .is-settingspage):not(.fullscreen, .disable-titlebar) {
+    #header {
+      height: 2rem !important;
+
+      .window-buttongroup {
+        height: 2rem !important;
+
+        button {
+          height: 100% !important;
+          margin: 0 !important;
+          opacity: 1;
+          transition: $transition-ease;
+        }
+      }
+    }
+    .vivaldi-settings {
+      .settings-sidebar {
+        box-shadow: none !important;
+
+        .button-category {
+          &:not(.category-selected) {
+            &:hover {
+              background-color: hsl(from var(--colorBg) h s calc(l + 4)) !important;
+            }
+          }
+
+          &.category-selected {
+            background-color: var(--colorHighlightBg) !important;
+            color: var(--colorBg) !important;
+            fill: var(--colorBg) !important;
+            stroke: var(--colorBg) !important;
+          }
+        }
+      }
+
+      .settings-content {
+        border: 0.5rem solid var(--colorBg);
+        border-radius: 1.5rem;
+        border-right: none;
       }
     }
   }

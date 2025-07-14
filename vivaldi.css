@@ -1,4 +1,3 @@
-/* sass variables */
 :root {
   --tabbar-width-colapsed: 1px;
   --tabbar-width-expanded: 250px;
@@ -49,7 +48,7 @@
 }
 
 .window-buttongroup {
-  border-radius: 0 0 var(--overall-corner-radius) var(--overall-corner-radius);
+  border-radius: 0;
   height: var(--viewport-corner-width) !important;
   overflow: hidden;
   transition: all var(--transition-duration) ease !important;
@@ -100,6 +99,9 @@
 #panels-container #switch {
   background-color: var(--colorBg) !important;
 }
+#panels-container .button-toolbar button:hover {
+  background-color: hsl(from var(--colorBg) h s 80/0.05);
+}
 #panels-container .panel {
   backdrop-filter: blur(12px);
   background-color: hsl(from var(--colorBg) h s l/0.8);
@@ -122,7 +124,7 @@
 
 #tabs-tabbar-container {
   backdrop-filter: blur(12px);
-  background-color: hsl(from var(--colorBg) h s l/0.95) !important;
+  background-color: hsl(from var(--colorBg) h s l/0.92) !important;
   border: 1px solid transparent;
   border-radius: var(--overall-corner-radius);
   margin-bottom: var(--viewport-corner-width);
@@ -131,6 +133,9 @@
   overflow: hidden;
   transition: all var(--transition-duration) cubic-bezier(0.15, 0.5, 0.9, 1.2) !important;
   width: var(--tabbar-width-colapsed) !important;
+}
+#tabs-tabbar-container .button-toolbar {
+  background-color: transparent !important;
 }
 #tabs-tabbar-container:hover {
   border: 1px solid hsla(0, 0%, 100%, 0.1);
@@ -184,22 +189,22 @@ button.SlideBar.SlideBar--FullHeight {
   justify-content: center;
 }
 .resize .tab-strip .tab-position .tab:hover {
-  background-color: hsl(from var(--colorBg) h s calc(l + 4));
+  background-color: hsl(from var(--colorBg) h s 80/0.05);
 }
 .resize .tab-strip .tab-position .tab:hover button.close {
   opacity: 1 !important;
 }
 .resize .tab-strip .tab-position .tab:hover button.close:hover {
-  background-color: hsl(from var(--colorBg) h s calc(l + 8)) !important;
+  background-color: hsl(from var(--colorBg) h s 80/0.05) !important;
 }
 .resize .tab-strip .tab-position .tab.active {
-  background-color: hsl(from var(--colorBg) h s calc(l + 8)) !important;
+  background-color: hsl(from var(--colorBg) h s 80/0.1) !important;
 }
 .resize .tab-strip .tab-position .tab.active button.close {
   opacity: 1 !important;
 }
 .resize .tab-strip .tab-position .tab.active button.close:hover {
-  background-color: hsl(from var(--colorBg) h s calc(l + 16)) !important;
+  background-color: hsl(from var(--colorBg) h s 80/0.1) !important;
 }
 .resize .tab-strip .tab-position .tab button.close {
   background-color: transparent;
@@ -221,11 +226,11 @@ button.SlideBar.SlideBar--FullHeight {
   height: 3rem !important;
   left: 50%;
   margin: 0;
+  max-width: 630px;
   outline-color: var(--colorAccentBgFadedMost);
   top: calc(50vh - 189px) !important;
   transform: translateX(-50%);
   width: 200%;
-  max-width: 630px;
 }
 #browser.address-top-off .UrlBar-AddressField.urlfield-anchor.button-textonly.below:focus-within .OmniDropdown {
   background-color: var(--colorAccentBgFadedMore);
@@ -238,6 +243,35 @@ button.SlideBar.SlideBar--FullHeight {
 }
 #browser.address-top-off .UrlBar-AddressField.urlfield-anchor.button-textonly.below:focus-within .OmniDropdown .OmniLinkItem:not(#browser.address-top-off .UrlBar-AddressField.urlfield-anchor.button-textonly.below:focus-within .OmniDropdown .OmniLinkItem--Highlighted):hover {
   background-color: var(--colorAccentBgFadedMost);
+}
+#browser:is(.popup, .is-settingspage):not(.fullscreen, .disable-titlebar) #header {
+  height: 2rem !important;
+}
+#browser:is(.popup, .is-settingspage):not(.fullscreen, .disable-titlebar) #header .window-buttongroup {
+  height: 2rem !important;
+}
+#browser:is(.popup, .is-settingspage):not(.fullscreen, .disable-titlebar) #header .window-buttongroup button {
+  height: 100% !important;
+  margin: 0 !important;
+  opacity: 1;
+  transition: all var(--transition-duration) ease !important;
+}
+#browser:is(.popup, .is-settingspage):not(.fullscreen, .disable-titlebar) .vivaldi-settings .settings-sidebar {
+  box-shadow: none !important;
+}
+#browser:is(.popup, .is-settingspage):not(.fullscreen, .disable-titlebar) .vivaldi-settings .settings-sidebar .button-category:not(.category-selected):hover {
+  background-color: hsl(from var(--colorBg) h s calc(l + 4)) !important;
+}
+#browser:is(.popup, .is-settingspage):not(.fullscreen, .disable-titlebar) .vivaldi-settings .settings-sidebar .button-category.category-selected {
+  background-color: var(--colorHighlightBg) !important;
+  color: var(--colorBg) !important;
+  fill: var(--colorBg) !important;
+  stroke: var(--colorBg) !important;
+}
+#browser:is(.popup, .is-settingspage):not(.fullscreen, .disable-titlebar) .vivaldi-settings .settings-content {
+  border: 0.5rem solid var(--colorBg);
+  border-radius: 1.5rem;
+  border-right: none;
 }
 
 /*# sourceMappingURL=vivaldi.css.map */
