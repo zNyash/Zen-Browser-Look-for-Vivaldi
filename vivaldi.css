@@ -6,13 +6,15 @@
   --overall-corner-radius: 0.5rem;
 }
 
+/* sass variables*/
+/* ---------- Top Bars ----------*/
 #header {
+  background-color: none !important;
+  background-color: var(--colorBg) !important;
+  box-shadow: none !important;
   height: var(--viewport-corner-width) !important;
   min-height: var(--viewport-corner-width) !important;
-  box-shadow: none !important;
-  background-color: none !important;
   pointer-events: all !important;
-  background-color: var(--colorBg) !important;
   transition: all var(--transition-duration) ease !important;
 }
 #header:hover {
@@ -23,23 +25,23 @@
   opacity: 1;
 }
 #header #pagetitle {
-  opacity: 0;
   background-color: var(--colorBg) !important;
+  opacity: 0;
   transition: all var(--transition-duration) ease !important;
 }
 #header #titlebar {
   pointer-events: all !important;
 }
 #header .vivaldi {
-  top: -4px !important;
-  left: -2px !important;
   height: 1rem !important;
+  left: -2px !important;
   opacity: 0 !important;
+  top: -4px !important;
   transition: all var(--transition-duration) ease !important;
 }
 #header .vivaldi:hover {
-  opacity: 1 !important;
   height: 2rem !important;
+  opacity: 1 !important;
 }
 
 .mainbar {
@@ -47,15 +49,15 @@
 }
 
 .window-buttongroup {
-  overflow: hidden;
-  height: var(--viewport-corner-width) !important;
   border-radius: 0 0 var(--overall-corner-radius) var(--overall-corner-radius);
+  height: var(--viewport-corner-width) !important;
+  overflow: hidden;
   transition: all var(--transition-duration) ease !important;
 }
 .window-buttongroup button {
-  opacity: 0;
-  margin: 0 !important;
   height: 100% !important;
+  margin: 0 !important;
+  opacity: 0;
   transition: all var(--transition-duration) ease !important;
 }
 .window-buttongroup:hover {
@@ -68,17 +70,19 @@
   margin-left: 0 !important;
 }
 
+/* ---------- Viewport ----------*/
 #webpage-stack {
   border-radius: var(--overall-corner-radius);
   margin: var(--viewport-corner-width);
-  margin-top: 0rem;
   margin-left: 0rem;
+  margin-top: 0rem;
 }
 
 #webview-container {
   background-color: var(--colorBg);
 }
 
+/* ---------- Side Panel ----------*/
 #panels-container {
   background-color: transparent !important;
   transition: all var(--transition-duration) ease !important;
@@ -87,8 +91,8 @@
   margin-left: 0;
 }
 #panels-container.icons {
-  margin-left: calc(var(--viewport-corner-width) * -1);
   border-left: 0px solid transparent !important;
+  margin-left: calc(var(--viewport-corner-width) * -1);
 }
 #panels-container.overlay {
   margin-left: calc(var(--viewport-corner-width) * -1);
@@ -97,35 +101,36 @@
   background-color: var(--colorBg) !important;
 }
 #panels-container .panel {
-  background-color: hsl(from var(--colorBg) h s l/0.8);
   backdrop-filter: blur(12px);
+  background-color: hsl(from var(--colorBg) h s l/0.8);
 }
 #panels-container .panel-group {
   border: 0 solid transparent !important;
 }
 
+/* ---------- Tabs Bar ----------*/
 .tabbar-wrapper {
-  width: var(--viewport-corner-width) !important;
-  position: absolute;
   left: 0;
+  position: absolute;
+  width: var(--viewport-corner-width) !important;
 }
 .tabbar-wrapper .tabbar-wrapper {
+  transition: all var(--transition-duration) cubic-bezier(0.15, 0.5, 0.9, 1.2) !important;
   width: var(--tabbar-width-colapsed) !important;
   z-index: 100 !important;
-  transition: all var(--transition-duration) cubic-bezier(0.15, 0.5, 0.9, 1.2) !important;
 }
 
 #tabs-tabbar-container {
-  width: var(--tabbar-width-colapsed) !important;
-  background-color: hsl(from var(--colorBg) h s l/0.95) !important;
   backdrop-filter: blur(12px);
-  overflow: hidden;
-  border-radius: var(--overall-corner-radius);
+  background-color: hsl(from var(--colorBg) h s l/0.95) !important;
   border: 1px solid transparent;
-  margin-top: 0rem;
+  border-radius: var(--overall-corner-radius);
   margin-bottom: var(--viewport-corner-width);
+  margin-top: 0rem;
   opacity: 0 !important;
+  overflow: hidden;
   transition: all var(--transition-duration) cubic-bezier(0.15, 0.5, 0.9, 1.2) !important;
+  width: var(--tabbar-width-colapsed) !important;
 }
 #tabs-tabbar-container:hover {
   border: 1px solid hsla(0, 0%, 100%, 0.1);
@@ -137,11 +142,11 @@
 }
 
 .tabbar-wrapper:hover #tabs-tabbar-container {
-  width: var(--tabbar-width-expanded) !important;
   border: 1px solid hsla(0, 0%, 100%, 0.1);
   box-shadow: 0px 0px 0.5rem hsla(0, 0%, 0%, 0.5), 0px 0px 1rem hsla(0, 0%, 0%, 0.5);
   margin-left: var(--viewport-corner-width);
   opacity: 1 !important;
+  width: var(--tabbar-width-expanded) !important;
 }
 
 button.SlideBar.SlideBar--FullHeight {
@@ -152,29 +157,30 @@ button.SlideBar.SlideBar--FullHeight {
   z-index: 150 !important;
 }
 
+/* Tabs itself*/
 .resize {
   max-height: 100% !important;
   max-width: var(--tabbar-width-expanded) !important;
 }
 .resize .tab-strip {
+  align-items: center;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-items: center;
   gap: 2px;
+  justify-content: flex-start;
 }
 .resize .tab-strip .tab-position {
-  position: relative !important;
   height: 2.25rem !important;
   margin-bottom: -31px;
+  position: relative !important;
 }
 .resize .tab-strip .tab-position .tab-wrapper {
   max-height: 2.25rem !important;
 }
 .resize .tab-strip .tab-position .tab {
-  height: 2.25rem !important;
   background-color: transparent;
+  height: 2.25rem !important;
   justify-content: center;
 }
 .resize .tab-strip .tab-position .tab:hover {
@@ -196,28 +202,29 @@ button.SlideBar.SlideBar--FullHeight {
   background-color: hsl(from var(--colorBg) h s calc(l + 16)) !important;
 }
 .resize .tab-strip .tab-position .tab button.close {
-  width: 1.5rem;
-  height: 1.5rem;
-  display: flex;
-  opacity: 0;
   background-color: transparent;
+  display: flex;
+  height: 1.5rem;
+  opacity: 0;
   transition: all var(--transition-duration) ease !important;
+  width: 1.5rem;
 }
 
+/* ---------- Search ----------*/
 .UrlBar-AddressField.urlfield-anchor.button-textonly.below:focus-within {
-  top: calc(50vh - 189px) !important;
-  width: 50vh;
-  left: 50%;
-  margin: 0;
-  transform: translateX(-50%);
-  background-color: var(--colorAccentBgFadedMore);
-  outline-color: var(--colorAccentBgFadedMost);
-  height: 3rem !important;
-  display: flex;
-  flex-direction: row;
   align-items: center;
+  background-color: var(--colorAccentBgFadedMore);
   border-radius: var(--overall-corner-radius);
   box-shadow: 0 5px 16px 16px hsl(from black h s l/0.1), 0 5px 8px 8px hsl(from black h s l/0.2);
+  display: flex;
+  flex-direction: row;
+  height: 3rem !important;
+  left: 50%;
+  margin: 0;
+  outline-color: var(--colorAccentBgFadedMost);
+  top: calc(50vh - 189px) !important;
+  transform: translateX(-50%);
+  width: 50vh;
 }
 .UrlBar-AddressField.urlfield-anchor.button-textonly.below:focus-within .OmniDropdown {
   background-color: var(--colorAccentBgFadedMore);
