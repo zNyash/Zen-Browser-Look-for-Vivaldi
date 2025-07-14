@@ -1,3 +1,4 @@
+/* sass variables */
 $tabbar-width-colapsed: var(--tabbar-width-colapsed);
 $tabbar-width-expanded: var(--tabbar-width-expanded);
 $transition-duration: var(--transition-duration);
@@ -15,9 +16,8 @@ $overall-corner-radius: var(--overall-corner-radius);
   --viewport-corner-width: 0.5rem;
   --overall-corner-radius: 0.5rem;
 }
-/* sass variables*/
 
-/* ---------- Top Bars ----------*/
+/* ---------- Top Bars ---------- */
 #header {
   background-color: none !important;
   background-color: var(--colorBg) !important;
@@ -86,7 +86,7 @@ $overall-corner-radius: var(--overall-corner-radius);
   }
 }
 
-/* ---------- Viewport ----------*/
+/* ---------- Viewport ---------- */
 #webpage-stack {
   border-radius: $overall-corner-radius;
   margin: $viewport-corner-width;
@@ -97,7 +97,7 @@ $overall-corner-radius: var(--overall-corner-radius);
   background-color: var(--colorBg);
 }
 
-/* ---------- Side Panel ----------*/
+/* ---------- Side Panel ---------- */
 #panels-container {
   background-color: transparent !important;
   transition: $transition-ease;
@@ -127,7 +127,7 @@ $overall-corner-radius: var(--overall-corner-radius);
   }
 }
 
-/* ---------- Tabs Bar ----------*/
+/* ---------- Tabs Bar ---------- */
 .tabbar-wrapper {
   left: 0;
   position: absolute;
@@ -182,7 +182,7 @@ button.SlideBar.SlideBar--FullHeight {
   z-index: 150 !important;
 }
 
-/* Tabs itself*/
+/* Tabs itself */
 .resize {
   max-height: 100% !important;
   max-width: $tabbar-width-expanded !important;
@@ -246,35 +246,40 @@ button.SlideBar.SlideBar--FullHeight {
   }
 }
 
-/* ---------- Search ----------*/
-.UrlBar-AddressField.urlfield-anchor.button-textonly.below:focus-within {
-  align-items: center;
-  background-color: var(--colorAccentBgFadedMore);
-  border-radius: $overall-corner-radius;
-  box-shadow: 0 5px 16px 16px hsl(from black h s l / 0.1), 0 5px 8px 8px hsl(from black h s l / 0.2);
-  display: flex;
-  flex-direction: row;
-  height: 3rem !important;
-  left: 50%;
-  margin: 0;
-  outline-color: var(--colorAccentBgFadedMost);
-  top: calc(50vh - 378px / 2) !important;
-  transform: translateX(-50%);
-  width: 50vh;
+/* ---------- Search ---------- */
+#browser {
+  &.address-top-off {
+    .UrlBar-AddressField.urlfield-anchor.button-textonly.below:focus-within {
+      align-items: center;
+      background-color: var(--colorAccentBgFadedMore);
+      border-radius: $overall-corner-radius;
+      box-shadow: 0 5px 16px 16px hsl(from black h s l / 0.1), 0 5px 8px 8px hsl(from black h s l / 0.2);
+      display: flex;
+      flex-direction: row;
+      height: 3rem !important;
+      left: 50%;
+      margin: 0;
+      outline-color: var(--colorAccentBgFadedMost);
+      top: calc(50vh - 378px / 2) !important;
+      transform: translateX(-50%);
+      width: 200%;
+      max-width: 630px;
 
-  .OmniDropdown {
-    background-color: var(--colorAccentBgFadedMore);
-    border: 2px solid var(--colorAccentBgFadedMost);
-    border-radius: $overall-corner-radius;
-    box-shadow: 0 5px 16px 16px hsl(from black h s l / 0.1), 0 5px 8px 8px hsl(from black h s l / 0.2);
+      .OmniDropdown {
+        background-color: var(--colorAccentBgFadedMore);
+        border: 2px solid var(--colorAccentBgFadedMost);
+        border-radius: $overall-corner-radius;
+        box-shadow: 0 5px 16px 16px hsl(from black h s l / 0.1), 0 5px 8px 8px hsl(from black h s l / 0.2);
 
-    &-Collection {
-      padding-top: 16px;
-    }
+        &-Collection {
+          padding-top: 16px;
+        }
 
-    .OmniLinkItem {
-      &:not(&--Highlighted):hover {
-        background-color: var(--colorAccentBgFadedMost);
+        .OmniLinkItem {
+          &:not(&--Highlighted):hover {
+            background-color: var(--colorAccentBgFadedMost);
+          }
+        }
       }
     }
   }

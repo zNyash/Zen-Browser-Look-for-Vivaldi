@@ -1,3 +1,4 @@
+/* sass variables */
 :root {
   --tabbar-width-colapsed: 1px;
   --tabbar-width-expanded: 250px;
@@ -6,8 +7,7 @@
   --overall-corner-radius: 0.5rem;
 }
 
-/* sass variables*/
-/* ---------- Top Bars ----------*/
+/* ---------- Top Bars ---------- */
 #header {
   background-color: none !important;
   background-color: var(--colorBg) !important;
@@ -70,7 +70,7 @@
   margin-left: 0 !important;
 }
 
-/* ---------- Viewport ----------*/
+/* ---------- Viewport ---------- */
 #webpage-stack {
   border-radius: var(--overall-corner-radius);
   margin: var(--viewport-corner-width);
@@ -82,7 +82,7 @@
   background-color: var(--colorBg);
 }
 
-/* ---------- Side Panel ----------*/
+/* ---------- Side Panel ---------- */
 #panels-container {
   background-color: transparent !important;
   transition: all var(--transition-duration) ease !important;
@@ -108,7 +108,7 @@
   border: 0 solid transparent !important;
 }
 
-/* ---------- Tabs Bar ----------*/
+/* ---------- Tabs Bar ---------- */
 .tabbar-wrapper {
   left: 0;
   position: absolute;
@@ -157,7 +157,7 @@ button.SlideBar.SlideBar--FullHeight {
   z-index: 150 !important;
 }
 
-/* Tabs itself*/
+/* Tabs itself */
 .resize {
   max-height: 100% !important;
   max-width: var(--tabbar-width-expanded) !important;
@@ -210,8 +210,8 @@ button.SlideBar.SlideBar--FullHeight {
   width: 1.5rem;
 }
 
-/* ---------- Search ----------*/
-.UrlBar-AddressField.urlfield-anchor.button-textonly.below:focus-within {
+/* ---------- Search ---------- */
+#browser.address-top-off .UrlBar-AddressField.urlfield-anchor.button-textonly.below:focus-within {
   align-items: center;
   background-color: var(--colorAccentBgFadedMore);
   border-radius: var(--overall-corner-radius);
@@ -224,18 +224,19 @@ button.SlideBar.SlideBar--FullHeight {
   outline-color: var(--colorAccentBgFadedMost);
   top: calc(50vh - 189px) !important;
   transform: translateX(-50%);
-  width: 50vh;
+  width: 200%;
+  max-width: 630px;
 }
-.UrlBar-AddressField.urlfield-anchor.button-textonly.below:focus-within .OmniDropdown {
+#browser.address-top-off .UrlBar-AddressField.urlfield-anchor.button-textonly.below:focus-within .OmniDropdown {
   background-color: var(--colorAccentBgFadedMore);
   border: 2px solid var(--colorAccentBgFadedMost);
   border-radius: var(--overall-corner-radius);
   box-shadow: 0 5px 16px 16px hsl(from black h s l/0.1), 0 5px 8px 8px hsl(from black h s l/0.2);
 }
-.UrlBar-AddressField.urlfield-anchor.button-textonly.below:focus-within .OmniDropdown-Collection {
+#browser.address-top-off .UrlBar-AddressField.urlfield-anchor.button-textonly.below:focus-within .OmniDropdown-Collection {
   padding-top: 16px;
 }
-.UrlBar-AddressField.urlfield-anchor.button-textonly.below:focus-within .OmniDropdown .OmniLinkItem:not(.UrlBar-AddressField.urlfield-anchor.button-textonly.below:focus-within .OmniDropdown .OmniLinkItem--Highlighted):hover {
+#browser.address-top-off .UrlBar-AddressField.urlfield-anchor.button-textonly.below:focus-within .OmniDropdown .OmniLinkItem:not(#browser.address-top-off .UrlBar-AddressField.urlfield-anchor.button-textonly.below:focus-within .OmniDropdown .OmniLinkItem--Highlighted):hover {
   background-color: var(--colorAccentBgFadedMost);
 }
 
