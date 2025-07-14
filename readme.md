@@ -30,3 +30,6 @@ You can open the .css file and play with the values within the variables
 https://github.com/user-attachments/assets/9c6ba6ff-cbbe-4ee0-a9b4-fd1859899e7b
 
 <img width="1919" height="1040" alt="Overview" src="https://github.com/user-attachments/assets/c534f95e-a25c-40ba-abc6-7d7a7e095936" />
+<img width="1919" height="1040" alt="Screenshot_6" src="https://github.com/user-attachments/assets/79ed440e-91e1-4f03-92eb-87fb7a9d7205" />
+<img width="1919" height="1040" alt="Screenshot_7" src="https://github.com/user-attachments/assets/339790e7-713d-499d-8e4f-1732b3402fdb" />
+<img width="1919" height="1040" alt="Screenshot_8" src="https://github.com/user-attachments/assets/4fa92b07-3d2b-493b-ab6d-9dd42df6e402" />
