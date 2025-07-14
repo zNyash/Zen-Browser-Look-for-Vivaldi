@@ -25,6 +25,8 @@ It's on the name. Basically a .css file you can use for Vivaldi Browser to make 
 You can open the .css file and play with the values within the variables
 ![css variables](https://nyashss.s-ul.eu/R6GHQIgV)
 
-Browser Look:
+# Preview
+
 https://github.com/user-attachments/assets/9c6ba6ff-cbbe-4ee0-a9b4-fd1859899e7b
 
+<img width="1919" height="1040" alt="Overview" src="https://github.com/user-attachments/assets/c534f95e-a25c-40ba-abc6-7d7a7e095936" />
