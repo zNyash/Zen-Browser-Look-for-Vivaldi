@@ -1,25 +1,31 @@
 :root {
-  --tabbar-width: 1px;
+  --tabbar-width-colapsed: 1px;
   --tabbar-width-expanded: 250px;
   --transition-duration: 125ms;
-  --transition-bezier: cubic-bezier(0.15, 0.5, 0.9, 1.2);
+  --viewport-corner-width: 0.5rem;
+  --overall-corner-radius: 0.5rem;
 }
 
 #header {
-  height: 0.5rem !important;
-  min-height: 0.5rem !important;
+  height: var(--viewport-corner-width) !important;
+  min-height: var(--viewport-corner-width) !important;
   box-shadow: none !important;
   background-color: none !important;
   pointer-events: all !important;
   background-color: var(--colorBg) !important;
-  transition: all 125ms ease !important;
+  transition: all var(--transition-duration) ease !important;
 }
 #header:hover {
   height: 2rem !important;
   min-height: 2rem !important;
 }
+#header:hover #pagetitle {
+  opacity: 1;
+}
 #header #pagetitle {
+  opacity: 0;
   background-color: var(--colorBg) !important;
+  transition: all var(--transition-duration) ease !important;
 }
 #header #titlebar {
   pointer-events: all !important;
@@ -29,7 +35,7 @@
   left: -2px !important;
   height: 1rem !important;
   opacity: 0 !important;
-  transition: all 125ms ease !important;
+  transition: all var(--transition-duration) ease !important;
 }
 #header .vivaldi:hover {
   opacity: 1 !important;
@@ -42,15 +48,15 @@
 
 .window-buttongroup {
   overflow: hidden;
-  height: 0.5rem !important;
-  border-radius: 0 0 0 0.25rem;
-  transition: all 125ms ease !important;
+  height: var(--viewport-corner-width) !important;
+  border-radius: 0 0 var(--overall-corner-radius) var(--overall-corner-radius);
+  transition: all var(--transition-duration) ease !important;
 }
 .window-buttongroup button {
   opacity: 0;
   margin: 0 !important;
   height: 100% !important;
-  transition: all 125ms ease !important;
+  transition: all var(--transition-duration) ease !important;
 }
 .window-buttongroup:hover {
   height: 2rem !important;
@@ -63,10 +69,10 @@
 }
 
 #webpage-stack {
-  border-radius: 0.5rem;
-  margin: 0.5rem;
+  border-radius: var(--overall-corner-radius);
+  margin: var(--viewport-corner-width);
   margin-top: 0rem;
-  margin-left: 0.2rem;
+  margin-left: 0rem;
 }
 
 #webview-container {
@@ -74,32 +80,52 @@
 }
 
 #panels-container {
-  background-color: var(--colorBg);
-  margin-left: -0.5rem;
-  transition: all 125ms ease !important;
+  background-color: transparent !important;
+  transition: all var(--transition-duration) ease !important;
+}
+#panels-container.switch {
+  margin-left: 0;
+}
+#panels-container.icons {
+  margin-left: calc(var(--viewport-corner-width) * -1);
+  border-left: 0px solid transparent !important;
+}
+#panels-container.overlay {
+  margin-left: calc(var(--viewport-corner-width) * -1);
+}
+#panels-container #switch {
+  background-color: var(--colorBg) !important;
+}
+#panels-container .panel {
+  background-color: hsl(from var(--colorBg) h s l/0.8);
+  backdrop-filter: blur(12px);
+}
+#panels-container .panel-group {
+  border: 0 solid transparent !important;
 }
 
 .tabbar-wrapper {
-  width: 0.3rem !important;
+  width: var(--viewport-corner-width) !important;
   position: absolute;
   left: 0;
 }
 .tabbar-wrapper .tabbar-wrapper {
-  width: 1px !important;
-  background-color: var(--colorBg) !important;
+  width: var(--tabbar-width-colapsed) !important;
   z-index: 100 !important;
-  transition: all 125ms cubic-bezier(0.15, 0.5, 0.9, 1.2) !important;
+  transition: all var(--transition-duration) cubic-bezier(0.15, 0.5, 0.9, 1.2) !important;
 }
 
 #tabs-tabbar-container {
-  width: 1px !important;
+  width: var(--tabbar-width-colapsed) !important;
+  background-color: hsl(from var(--colorBg) h s l/0.95) !important;
+  backdrop-filter: blur(12px);
   overflow: hidden;
-  border-radius: 0.5rem;
+  border-radius: var(--overall-corner-radius);
   border: 1px solid transparent;
   margin-top: 0rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--viewport-corner-width);
   opacity: 0 !important;
-  transition: all 125ms cubic-bezier(0.15, 0.5, 0.9, 1.2) !important;
+  transition: all var(--transition-duration) cubic-bezier(0.15, 0.5, 0.9, 1.2) !important;
 }
 #tabs-tabbar-container:hover {
   border: 1px solid hsla(0, 0%, 100%, 0.1);
@@ -107,14 +133,14 @@
   opacity: 1 !important;
 }
 #tabs-tabbar-container:hover .tabbar-wrapper .tabbar-wrapper {
-  width: 250px !important;
+  width: var(--tabbar-width-expanded) !important;
 }
 
 .tabbar-wrapper:hover #tabs-tabbar-container {
-  width: 250px !important;
+  width: var(--tabbar-width-expanded) !important;
   border: 1px solid hsla(0, 0%, 100%, 0.1);
   box-shadow: 0px 0px 0.5rem hsla(0, 0%, 0%, 0.5), 0px 0px 1rem hsla(0, 0%, 0%, 0.5);
-  margin-left: 0.25rem;
+  margin-left: var(--viewport-corner-width);
   opacity: 1 !important;
 }
 
@@ -128,7 +154,7 @@ button.SlideBar.SlideBar--FullHeight {
 
 .resize {
   max-height: 100% !important;
-  max-width: 250px !important;
+  max-width: var(--tabbar-width-expanded) !important;
 }
 .resize .tab-strip {
   display: flex;
@@ -141,24 +167,44 @@ button.SlideBar.SlideBar--FullHeight {
 .resize .tab-strip .tab-position {
   position: relative !important;
   height: 2.25rem !important;
-  margin-bottom: -29px;
+  margin-bottom: -31px;
 }
 .resize .tab-strip .tab-position .tab-wrapper {
   max-height: 2.25rem !important;
 }
 .resize .tab-strip .tab-position .tab {
   height: 2.25rem !important;
-  background-color: var(--colorBg);
+  background-color: transparent;
   justify-content: center;
 }
 .resize .tab-strip .tab-position .tab:hover {
-  background-color: var(--colorBgLightIntense) !important;
+  background-color: hsl(from var(--colorBg) h s calc(l + 4));
+}
+.resize .tab-strip .tab-position .tab:hover button.close {
+  opacity: 1 !important;
+}
+.resize .tab-strip .tab-position .tab:hover button.close:hover {
+  background-color: hsl(from var(--colorBg) h s calc(l + 8)) !important;
 }
 .resize .tab-strip .tab-position .tab.active {
-  background-color: var(--colorBgLighter) !important;
+  background-color: hsl(from var(--colorBg) h s calc(l + 8)) !important;
+}
+.resize .tab-strip .tab-position .tab.active button.close {
+  opacity: 1 !important;
+}
+.resize .tab-strip .tab-position .tab.active button.close:hover {
+  background-color: hsl(from var(--colorBg) h s calc(l + 16)) !important;
+}
+.resize .tab-strip .tab-position .tab button.close {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  opacity: 0;
+  background-color: transparent;
+  transition: all var(--transition-duration) ease !important;
 }
 
-.UrlBar-AddressField.urlfield-anchor.button-textonly.below {
+.UrlBar-AddressField.urlfield-anchor.button-textonly.below:focus-within {
   top: calc(50vh - 189px) !important;
   width: 50vh;
   left: 50%;
@@ -170,19 +216,19 @@ button.SlideBar.SlideBar--FullHeight {
   display: flex;
   flex-direction: row;
   align-items: center;
-  border-radius: 0.5rem;
+  border-radius: var(--overall-corner-radius);
   box-shadow: 0 5px 16px 16px hsl(from black h s l/0.1), 0 5px 8px 8px hsl(from black h s l/0.2);
 }
-.UrlBar-AddressField.urlfield-anchor.button-textonly.below .OmniDropdown {
+.UrlBar-AddressField.urlfield-anchor.button-textonly.below:focus-within .OmniDropdown {
   background-color: var(--colorAccentBgFadedMore);
   border: 2px solid var(--colorAccentBgFadedMost);
-  border-radius: 0.5rem;
+  border-radius: var(--overall-corner-radius);
   box-shadow: 0 5px 16px 16px hsl(from black h s l/0.1), 0 5px 8px 8px hsl(from black h s l/0.2);
 }
-.UrlBar-AddressField.urlfield-anchor.button-textonly.below .OmniDropdown-Collection {
+.UrlBar-AddressField.urlfield-anchor.button-textonly.below:focus-within .OmniDropdown-Collection {
   padding-top: 16px;
 }
-.UrlBar-AddressField.urlfield-anchor.button-textonly.below .OmniDropdown .OmniLinkItem:not(.UrlBar-AddressField.urlfield-anchor.button-textonly.below .OmniDropdown .OmniLinkItem--Highlighted):hover {
+.UrlBar-AddressField.urlfield-anchor.button-textonly.below:focus-within .OmniDropdown .OmniLinkItem:not(.UrlBar-AddressField.urlfield-anchor.button-textonly.below:focus-within .OmniDropdown .OmniLinkItem--Highlighted):hover {
   background-color: var(--colorAccentBgFadedMost);
 }
 

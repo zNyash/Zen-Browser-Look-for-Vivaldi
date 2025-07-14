@@ -1,33 +1,44 @@
-$tabbar-width: 1px;
-$tabbar-width-expanded: 250px;
-$transition-duration: 125ms;
-$transition-bezier: cubic-bezier(0.15, 0.5, 0.9, 1.2);
-
 :root {
-  --tabbar-width: #{$tabbar-width};
-  --tabbar-width-expanded: #{$tabbar-width-expanded};
-  --transition-duration: #{$transition-duration};
-  --transition-bezier: #{$transition-bezier};
+  --tabbar-width-colapsed: 1px;
+  --tabbar-width-expanded: 250px;
+
+  --transition-duration: 125ms;
+
+  --viewport-corner-width: 0.5rem;
+  --overall-corner-radius: 0.5rem;
 }
+// sass variables
+$tabbar-width-colapsed: var(--tabbar-width-colapsed);
+$tabbar-width-expanded: var(--tabbar-width-expanded);
+$transition-duration: var(--transition-duration);
+$transition-ease: all var(--transition-duration) ease !important;
+$transition-bezier: all var(--transition-duration) cubic-bezier(0.15, 0.5, 0.9, 1.2) !important;
+$viewport-corner-width: var(--viewport-corner-width);
+$overall-corner-radius: var(--overall-corner-radius);
 
 // ---------- Top Bars ----------
 #header {
-  height: 0.5rem !important;
-  min-height: 0.5rem !important;
+  height: $viewport-corner-width !important;
+  min-height: $viewport-corner-width !important;
   box-shadow: none !important;
   background-color: none !important;
   pointer-events: all !important;
   background-color: var(--colorBg) !important;
 
-  transition: all $transition-duration ease !important;
+  transition: $transition-ease;
 
   &:hover {
     height: 2rem !important;
     min-height: 2rem !important;
+    #pagetitle {
+      opacity: 1;
+    }
   }
 
   #pagetitle {
+    opacity: 0;
     background-color: var(--colorBg) !important;
+    transition: $transition-ease;
   }
   #titlebar {
     pointer-events: all !important;
@@ -37,7 +48,7 @@ $transition-bezier: cubic-bezier(0.15, 0.5, 0.9, 1.2);
     left: -2px !important;
     height: 1rem !important;
     opacity: 0 !important;
-    transition: all $transition-duration ease !important;
+    transition: $transition-ease;
 
     &:hover {
       opacity: 1 !important;
@@ -50,15 +61,15 @@ $transition-bezier: cubic-bezier(0.15, 0.5, 0.9, 1.2);
 }
 .window-buttongroup {
   overflow: hidden;
-  height: 0.5rem !important;
-  border-radius: 0 0 0 0.25rem;
-  transition: all $transition-duration ease !important;
+  height: $viewport-corner-width !important;
+  border-radius: 0 0 $overall-corner-radius $overall-corner-radius;
+  transition: $transition-ease;
 
   button {
     opacity: 0;
     margin: 0 !important;
     height: 100% !important;
-    transition: all $transition-duration ease !important;
+    transition: $transition-ease;
   }
 
   &:hover {
@@ -76,44 +87,69 @@ $transition-bezier: cubic-bezier(0.15, 0.5, 0.9, 1.2);
 
 // ---------- Viewport ----------
 #webpage-stack {
-  border-radius: 0.5rem;
-  margin: 0.5rem;
+  border-radius: $overall-corner-radius;
+  margin: $viewport-corner-width;
   margin-top: 0rem;
-  margin-left: calc(0.5rem - 0.3rem);
+  margin-left: 0rem;
 }
 #webview-container {
   background-color: var(--colorBg);
 }
 
-// ---------- Side Panels ----------
+// ---------- Side Panel ----------
 #panels-container {
-  background-color: var(--colorBg);
-  margin-left: -0.5rem;
-  transition: all $transition-duration ease !important;
+  background-color: transparent !important;
+  transition: $transition-ease;
+
+  &.switch {
+    margin-left: 0;
+  }
+  &.icons {
+    margin-left: calc($viewport-corner-width * (-1));
+    border-left: 0px solid transparent !important;
+  }
+  &.overlay {
+    margin-left: calc($viewport-corner-width * (-1));
+  }
+
+  #switch {
+    background-color: var(--colorBg) !important;
+  }
+
+  .panel {
+    background-color: hsl(from var(--colorBg) h s l / 0.8);
+    backdrop-filter: blur(12px);
+
+    &-group {
+      border: 0 solid transparent !important;
+    }
+  }
 }
 
-// Tabs bar
+// ---------- Tabs Bar ----------
 .tabbar-wrapper {
-  width: 0.3rem !important;
+  width: $viewport-corner-width !important;
   position: absolute;
   left: 0;
 
   .tabbar-wrapper {
-    width: $tabbar-width !important;
-    background-color: var(--colorBg) !important;
+    width: $tabbar-width-colapsed !important;
+
     z-index: 100 !important;
-    transition: all $transition-duration $transition-bezier !important;
+    transition: $transition-bezier;
   }
 }
 #tabs-tabbar-container {
-  width: $tabbar-width !important;
+  width: $tabbar-width-colapsed !important;
+  background-color: hsl(from var(--colorBg) h s l / 0.95) !important;
+  backdrop-filter: blur(12px);
   overflow: hidden;
-  border-radius: 0.5rem;
+  border-radius: $overall-corner-radius;
   border: 1px solid transparent;
   margin-top: 0rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: $viewport-corner-width;
   opacity: 0 !important;
-  transition: all $transition-duration $transition-bezier !important;
+  transition: $transition-bezier;
 
   &:hover {
     border: 1px solid hsl(0deg 0% 100% / 10%);
@@ -127,22 +163,15 @@ $transition-bezier: cubic-bezier(0.15, 0.5, 0.9, 1.2);
     }
   }
 }
-// .button-toolbar.newtab {
-//   opacity: 0 !important;
-//   transition: all $transition-duration $transition-bezier !important;
-// }
+
 .tabbar-wrapper:hover {
   #tabs-tabbar-container {
     width: $tabbar-width-expanded !important;
     border: 1px solid hsl(0deg 0% 100% / 10%);
     box-shadow: 0px 0px 0.5rem hsl(0deg 0% 0% / 50%), 0px 0px 1rem hsl(0deg 0% 0% / 50%);
-    margin-left: 0.25rem;
+    margin-left: $viewport-corner-width;
     opacity: 1 !important;
   }
-
-  // .button-toolbar.newtab {
-  //   opacity: 1 !important;
-  // }
 }
 
 button.SlideBar.SlideBar--FullHeight {
@@ -168,7 +197,7 @@ button.SlideBar.SlideBar--FullHeight {
     .tab-position {
       position: relative !important;
       height: 2.25rem !important;
-      margin-bottom: -29px;
+      margin-bottom: -31px;
 
       .tab-wrapper {
         max-height: 2.25rem !important;
@@ -176,14 +205,40 @@ button.SlideBar.SlideBar--FullHeight {
 
       .tab {
         height: 2.25rem !important;
-        background-color: var(--colorBg);
+        background-color: transparent;
         justify-content: center;
 
         &:hover {
-          background-color: var(--colorBgLightIntense) !important;
+          background-color: hsl(from var(--colorBg) h s calc(l + 4));
+
+          button.close {
+            opacity: 1 !important;
+
+            &:hover {
+              background-color: hsl(from var(--colorBg) h s calc(l + 8)) !important;
+            }
+          }
         }
+
         &.active {
-          background-color: var(--colorBgLighter) !important;
+          background-color: hsl(from var(--colorBg) h s calc(l + 8)) !important;
+
+          button.close {
+            opacity: 1 !important;
+
+            &:hover {
+              background-color: hsl(from var(--colorBg) h s calc(l + 16)) !important;
+            }
+          }
+        }
+
+        button.close {
+          width: 1.5rem;
+          height: 1.5rem;
+          display: flex;
+          opacity: 0;
+          background-color: transparent;
+          transition: $transition-ease;
         }
       }
     }
@@ -191,7 +246,7 @@ button.SlideBar.SlideBar--FullHeight {
 }
 
 // ---------- Search ----------
-.UrlBar-AddressField.urlfield-anchor.button-textonly.below {
+.UrlBar-AddressField.urlfield-anchor.button-textonly.below:focus-within {
   top: calc(50vh - 378px / 2) !important;
   width: 50vh;
   left: 50%;
@@ -203,13 +258,13 @@ button.SlideBar.SlideBar--FullHeight {
   display: flex;
   flex-direction: row;
   align-items: center;
-  border-radius: 0.5rem;
+  border-radius: $overall-corner-radius;
   box-shadow: 0 5px 16px 16px hsl(from black h s l / 0.1), 0 5px 8px 8px hsl(from black h s l / 0.2);
 
   .OmniDropdown {
     background-color: var(--colorAccentBgFadedMore);
     border: 2px solid var(--colorAccentBgFadedMost);
-    border-radius: 0.5rem;
+    border-radius: $overall-corner-radius;
     box-shadow: 0 5px 16px 16px hsl(from black h s l / 0.1), 0 5px 8px 8px hsl(from black h s l / 0.2);
 
     &-Collection {
