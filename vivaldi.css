@@ -4,21 +4,20 @@
   --transition-duration: 125ms;
   --viewport-corner-width: 0.5rem;
   --overall-corner-radius: 0.5rem;
+  --lightness-for-overlay: 80;
 }
 
 /* ---------- Top Bars ---------- */
 #header {
-  background-color: none !important;
   background-color: var(--colorBg) !important;
   box-shadow: none !important;
-  height: var(--viewport-corner-width) !important;
-  min-height: var(--viewport-corner-width) !important;
-  pointer-events: all !important;
+  height: 0 !important;
+  min-height: 0 !important;
   transition: all var(--transition-duration) ease !important;
 }
 #header:hover {
-  height: 2rem !important;
-  min-height: 2rem !important;
+  height: 1.5rem !important;
+  min-height: 1.5rem !important;
 }
 #header:hover #pagetitle {
   opacity: 1;
@@ -27,9 +26,6 @@
   background-color: var(--colorBg) !important;
   opacity: 0;
   transition: all var(--transition-duration) ease !important;
-}
-#header #titlebar {
-  pointer-events: all !important;
 }
 #header .vivaldi {
   height: 1rem !important;
@@ -43,14 +39,16 @@
   opacity: 1 !important;
 }
 
-.mainbar {
-  border: none !important;
+#main {
+  background-color: var(--colorBg);
 }
 
 .window-buttongroup {
+  top: 0 !important;
   border-radius: 0;
   height: var(--viewport-corner-width) !important;
-  overflow: hidden;
+  overflow: hidden !important;
+  z-index: 200 !important;
   transition: all var(--transition-duration) ease !important;
 }
 .window-buttongroup button {
@@ -67,6 +65,37 @@
 }
 .window-buttongroup .window-minimize {
   margin-left: 0 !important;
+}
+
+.mainbar {
+  border: none !important;
+}
+
+.bookmark-bar {
+  background-color: var(--colorBg);
+  border: none !important;
+  height: var(--viewport-corner-width) !important;
+  margin-right: 135px;
+  -webkit-app-region: drag;
+  transition: all var(--transition-duration) ease !important;
+}
+.bookmark-bar:hover {
+  height: 2rem !important;
+}
+.bookmark-bar:hover .bookmarkbarItem {
+  opacity: 1 !important;
+}
+.bookmark-bar .bookmarkbarItem {
+  background-color: transparent !important;
+  opacity: 0 !important;
+  transition: all var(--transition-duration) ease !important;
+  border-radius: calc(var(--overall-corner-radius) / 2);
+}
+.bookmark-bar .bookmarkbarItem:hover {
+  background-color: hsl(from var(--colorBg) h s var(--lightness-for-overlay)/0.05) !important;
+}
+.bookmark-bar .spacer {
+  width: 0 !important;
 }
 
 /* ---------- Viewport ---------- */
@@ -100,7 +129,7 @@
   background-color: var(--colorBg) !important;
 }
 #panels-container .button-toolbar button:hover {
-  background-color: hsl(from var(--colorBg) h s 80/0.05);
+  background-color: hsl(from var(--colorBg) h s var(--lightness-for-overlay)/0.05);
 }
 #panels-container .panel {
   backdrop-filter: blur(12px);
@@ -189,22 +218,22 @@ button.SlideBar.SlideBar--FullHeight {
   justify-content: center;
 }
 .resize .tab-strip .tab-position .tab:hover {
-  background-color: hsl(from var(--colorBg) h s 80/0.05);
+  background-color: hsl(from var(--colorBg) h s var(--lightness-for-overlay)/0.05);
 }
 .resize .tab-strip .tab-position .tab:hover button.close {
   opacity: 1 !important;
 }
 .resize .tab-strip .tab-position .tab:hover button.close:hover {
-  background-color: hsl(from var(--colorBg) h s 80/0.05) !important;
+  background-color: hsl(from var(--colorBg) h s var(--lightness-for-overlay)/0.05) !important;
 }
 .resize .tab-strip .tab-position .tab.active {
-  background-color: hsl(from var(--colorBg) h s 80/0.1) !important;
+  background-color: hsl(from var(--colorBg) h s var(--lightness-for-overlay)/0.1) !important;
 }
 .resize .tab-strip .tab-position .tab.active button.close {
   opacity: 1 !important;
 }
 .resize .tab-strip .tab-position .tab.active button.close:hover {
-  background-color: hsl(from var(--colorBg) h s 80/0.1) !important;
+  background-color: hsl(from var(--colorBg) h s var(--lightness-for-overlay)/0.1) !important;
 }
 .resize .tab-strip .tab-position .tab button.close {
   background-color: transparent;

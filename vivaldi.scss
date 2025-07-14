@@ -1,10 +1,5 @@
-$tabbar-width-colapsed: var(--tabbar-width-colapsed);
-$tabbar-width-expanded: var(--tabbar-width-expanded);
-$transition-duration: var(--transition-duration);
 $transition-ease: all var(--transition-duration) ease !important;
 $transition-bezier: all var(--transition-duration) cubic-bezier(0.15, 0.5, 0.9, 1.2) !important;
-$viewport-corner-width: var(--viewport-corner-width);
-$overall-corner-radius: var(--overall-corner-radius);
 
 :root {
   --tabbar-width-colapsed: 1px;
@@ -14,22 +9,21 @@ $overall-corner-radius: var(--overall-corner-radius);
 
   --viewport-corner-width: 0.5rem;
   --overall-corner-radius: 0.5rem;
+
+  --lightness-for-overlay: 80;
 }
 
 /* ---------- Top Bars ---------- */
 #header {
-  background-color: none !important;
   background-color: var(--colorBg) !important;
   box-shadow: none !important;
-  height: $viewport-corner-width !important;
-  min-height: $viewport-corner-width !important;
-  pointer-events: all !important;
-
+  height: 0 !important;
+  min-height: 0 !important;
   transition: $transition-ease;
 
   &:hover {
-    height: 2rem !important;
-    min-height: 2rem !important;
+    height: 1.5rem !important;
+    min-height: 1.5rem !important;
     #pagetitle {
       opacity: 1;
     }
@@ -40,9 +34,7 @@ $overall-corner-radius: var(--overall-corner-radius);
     opacity: 0;
     transition: $transition-ease;
   }
-  #titlebar {
-    pointer-events: all !important;
-  }
+
   .vivaldi {
     height: 1rem !important;
     left: -2px !important;
@@ -56,13 +48,15 @@ $overall-corner-radius: var(--overall-corner-radius);
     }
   }
 }
-.mainbar {
-  border: none !important;
+#main {
+  background-color: var(--colorBg);
 }
 .window-buttongroup {
+  top: 0 !important;
   border-radius: 0;
-  height: $viewport-corner-width !important;
-  overflow: hidden;
+  height: var(--viewport-corner-width) !important;
+  overflow: hidden !important;
+  z-index: 200 !important;
   transition: $transition-ease;
 
   button {
@@ -84,11 +78,47 @@ $overall-corner-radius: var(--overall-corner-radius);
     margin-left: 0 !important;
   }
 }
+.mainbar {
+  border: none !important;
+}
+
+// Bookmarks
+.bookmark-bar {
+  background-color: var(--colorBg);
+  border: none !important;
+  height: var(--viewport-corner-width) !important;
+  margin-right: 135px;
+  -webkit-app-region: drag;
+  transition: $transition-ease;
+
+  &:hover {
+    height: 2rem !important;
+
+    .bookmarkbarItem {
+      opacity: 1 !important;
+    }
+  }
+
+  .bookmarkbarItem {
+    background-color: transparent !important;
+    opacity: 0 !important;
+    transition: $transition-ease;
+    border-radius: calc(var(--overall-corner-radius) / 2);
+
+    &:hover {
+      background-color: hsl(from var(--colorBg) h s var(--lightness-for-overlay) / 0.05) !important;
+    }
+  }
+
+  .spacer {
+    width: 0 !important;
+  }
+}
 
 /* ---------- Viewport ---------- */
 #webpage-stack {
-  border-radius: $overall-corner-radius;
-  margin: $viewport-corner-width;
+  border-radius: var(--overall-corner-radius);
+  margin: var(--viewport-corner-width);
   margin-left: 0rem;
   margin-top: 0rem;
 }
@@ -106,10 +136,10 @@ $overall-corner-radius: var(--overall-corner-radius);
   }
   &.icons {
     border-left: 0px solid transparent !important;
-    margin-left: calc($viewport-corner-width * (-1));
+    margin-left: calc(var(--viewport-corner-width) * (-1));
   }
   &.overlay {
-    margin-left: calc($viewport-corner-width * (-1));
+    margin-left: calc(var(--viewport-corner-width) * (-1));
   }
 
   #switch {
@@ -118,7 +148,7 @@ $overall-corner-radius: var(--overall-corner-radius);
 
   .button-toolbar {
     button:hover {
-      background-color: hsl(from var(--colorBg) h s 80 / 0.05);
+      background-color: hsl(from var(--colorBg) h s var(--lightness-for-overlay) / 0.05);
     }
   }
   .panel {
@@ -135,11 +165,11 @@ $overall-corner-radius: var(--overall-corner-radius);
 .tabbar-wrapper {
   left: 0;
   position: absolute;
-  width: $viewport-corner-width !important;
+  width: var(--viewport-corner-width) !important;
 
   .tabbar-wrapper {
     transition: $transition-bezier;
-    width: $tabbar-width-colapsed !important;
+    width: var(--tabbar-width-colapsed) !important;
 
     z-index: 100 !important;
   }
@@ -148,13 +178,13 @@ $overall-corner-radius: var(--overall-corner-radius);
   backdrop-filter: blur(12px);
   background-color: hsl(from var(--colorBg) h s l / 0.92) !important;
   border: 1px solid transparent;
-  border-radius: $overall-corner-radius;
-  margin-bottom: $viewport-corner-width;
+  border-radius: var(--overall-corner-radius);
+  margin-bottom: var(--viewport-corner-width);
   margin-top: 0rem;
   opacity: 0 !important;
   overflow: hidden;
   transition: $transition-bezier;
-  width: $tabbar-width-colapsed !important;
+  width: var(--tabbar-width-colapsed) !important;
 
   .button-toolbar {
     background-color: transparent !important;
@@ -167,7 +197,7 @@ $overall-corner-radius: var(--overall-corner-radius);
 
     .tabbar-wrapper {
       .tabbar-wrapper {
-        width: $tabbar-width-expanded !important;
+        width: var(--tabbar-width-expanded) !important;
       }
     }
   }
@@ -177,9 +207,9 @@ $overall-corner-radius: var(--overall-corner-radius);
   #tabs-tabbar-container {
     border: 1px solid hsl(0deg 0% 100% / 10%);
     box-shadow: 0px 0px 0.5rem hsl(0deg 0% 0% / 50%), 0px 0px 1rem hsl(0deg 0% 0% / 50%);
-    margin-left: $viewport-corner-width;
+    margin-left: var(--viewport-corner-width);
     opacity: 1 !important;
-    width: $tabbar-width-expanded !important;
+    width: var(--tabbar-width-expanded) !important;
   }
 }
 
@@ -193,7 +223,7 @@ button.SlideBar.SlideBar--FullHeight {
 /* Tabs itself */
 .resize {
   max-height: 100% !important;
-  max-width: $tabbar-width-expanded !important;
+  max-width: var(--tabbar-width-expanded) !important;
 
   .tab-strip {
     align-items: center;
@@ -218,25 +248,25 @@ button.SlideBar.SlideBar--FullHeight {
         justify-content: center;
 
         &:hover {
-          background-color: hsl(from var(--colorBg) h s 80 / 0.05);
+          background-color: hsl(from var(--colorBg) h s var(--lightness-for-overlay) / 0.05);
 
           button.close {
             opacity: 1 !important;
 
             &:hover {
-              background-color: hsl(from var(--colorBg) h s 80 / 0.05) !important;
+              background-color: hsl(from var(--colorBg) h s var(--lightness-for-overlay) / 0.05) !important;
             }
           }
         }
 
         &.active {
-          background-color: hsl(from var(--colorBg) h s 80 / 0.1) !important;
+          background-color: hsl(from var(--colorBg) h s var(--lightness-for-overlay) / 0.1) !important;
 
           button.close {
             opacity: 1 !important;
 
             &:hover {
-              background-color: hsl(from var(--colorBg) h s 80 / 0.1) !important;
+              background-color: hsl(from var(--colorBg) h s var(--lightness-for-overlay) / 0.1) !important;
             }
           }
         }
@@ -260,7 +290,7 @@ button.SlideBar.SlideBar--FullHeight {
     .UrlBar-AddressField.urlfield-anchor.button-textonly.below:focus-within {
       align-items: center;
       background-color: var(--colorAccentBgFadedMore);
-      border-radius: $overall-corner-radius;
+      border-radius: var(--overall-corner-radius);
       box-shadow: 0 5px 16px 16px hsl(from black h s l / 0.1), 0 5px 8px 8px hsl(from black h s l / 0.2);
       display: flex;
       flex-direction: row;
@@ -276,7 +306,7 @@ button.SlideBar.SlideBar--FullHeight {
       .OmniDropdown {
         background-color: var(--colorAccentBgFadedMore);
         border: 2px solid var(--colorAccentBgFadedMost);
-        border-radius: $overall-corner-radius;
+        border-radius: var(--overall-corner-radius);
         box-shadow: 0 5px 16px 16px hsl(from black h s l / 0.1), 0 5px 8px 8px hsl(from black h s l / 0.2);
 
         &-Collection {
