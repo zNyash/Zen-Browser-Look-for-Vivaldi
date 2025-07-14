@@ -24,3 +24,7 @@ It's on the name. Basically a .css file you can use for Vivaldi Browser to make 
 ## Customization
 You can open the .css file and play with the values within the variables
 ![css variables](https://nyashss.s-ul.eu/R6GHQIgV)
+
+Browser Look:
+https://github.com/user-attachments/assets/9c6ba6ff-cbbe-4ee0-a9b4-fd1859899e7b
+
