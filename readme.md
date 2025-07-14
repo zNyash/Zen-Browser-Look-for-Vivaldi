@@ -1,6 +1,26 @@
 # Zen-Browser-Look-for-Vivaldi
-It's on the name. Basically a css file you can use for Vivaldi Browser to make it look more like Zen/Arc.
+It's on the name. Basically a .css file you can use for Vivaldi Browser to make it look more like Zen/Arc.
 
 ## Usage
-- Go to `vivaldi://experiments/` and check `Allow CSS modifications`
-- Download the .css file [here](https://raw.githubusercontent.com/zNyash/Zen-Browser-Look-for-Vivaldi/refs/heads/main/vivaldi.css)
+- Go to [experiments](vivaldi://experiments/) and check `Allow CSS modifications`
+- Open [settings/appearance](vivaldi://settings/appearance/) and on **CUSTOM UI MODIFICATIONS** section select a folder where your .css is going to be.
+- Download the .css file [here](https://github.com/zNyash/Zen-Browser-Look-for-Vivaldi/releases/download/0.1.0/vivaldi.css) and paste on your chosen folder
+## Settings you need to make it work:
+- At [settings/tabs](vivaldi:settings/tabs/):
+	- Check `Show Tab Bar`
+	- Tab Bar Position 
+		- Choose `Left`
+- At [settings/panel](vivaldi:settings/panel/):
+	- Panel Position
+		- Check `Right Side`
+	- Panel Options
+		- Uncheck `Show Panel Toggle`
+- At [settings/addressbar](vivaldi:settings/addressbar/):
+	- Uncheck `Show Address Bar`
+- At [settings/bookmarks](vivaldi:settings/bookmarks/):
+	- **BOOKMARK BAR**
+		- Check `Show Bookmark Bar`
+
+## Customization
+You can open the .css file and play with the values within the variables
+![css variables](https://nyashss.s-ul.eu/R6GHQIgV)
